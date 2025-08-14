@@ -1,17 +1,17 @@
 #cesta
 
 def mostrar_menu():
-    """Muestra las opciones del menu al usuario."""
-    print("\n- MENU DE LA CESTA DE COMPRAS -")
-    print("1. AGREGAR un nuevo elemento")
-    print("2. MOSTRAR el contenido de la cesta de la compra")
-    print("3. ELIMINAR un elemento")
-    print("4. CALCULAR el total de la compra")
-    print("5. SALIR del programa")
-    print("------------------------------------")
+    "Muestra las opciones del menu al usuario."
+    print("\n- menu de compras -")
+    print("1. escoge un nuevo elemento")
+    print("2. mostrar el contenido de la cesta de la compra")
+    print("3. eliminar un elemento")
+    print("4. calcular el total de la compra")
+    print("5. salir del programa")
+    print("-")
 
 def agregar_elemento(cesta):
-    """Permite al usuario agregar un elemento a la cesta."""
+    "Permite al usuario agregar un elemento a la cesta."
     nombre = input("Ingresa el nombre del elemento: ").strip().lower()
     try:
         cantidad = int(input(f"Ingresa la cantidad de '{nombre}': "))
@@ -36,13 +36,13 @@ def mostrar_cesta(cesta):
         print("La cesta de compras está vacía.")
         return
     
-    print("\n--- CONTENIDO DE LA CESTA DE COMPRAS ---")
+    print("\n- CONTENIDO DE LA CESTA DE COMPRAS -")
     for nombre, detalles in cesta.items():
         print(f"- {nombre.capitalize()}: {detalles['cantidad']} unidades ${detalles['precio']:.2f} c/u")
     print
 
 def eliminar_elemento(cesta):
-    """Permite al usuario eliminar un elemento de la cesta."""
+    "Permite al usuario eliminar un elemento de la cesta."
     if not cesta:
         print("La cesta de compras está vacía, no hay elementos para eliminar.")
         return
@@ -55,20 +55,20 @@ def eliminar_elemento(cesta):
         print(f"'{nombre_eliminar.capitalize()}' no se encontró en la cesta.")
 
 def calcular_total(cesta):
-    """Calcula y muestra el total de la compra."""
+    "Calcula y muestra el total de la compra."
     if not cesta:
         print("La cesta de compras está vacía, el total es $0.00.")
         return
 
     total = 0.0
-    print("\n--- RESUMEN DE LA COMPRA ---")
+    print("\n- RESUMEN DE LA COMPRA -")
     for nombre, detalles in cesta.items():
         subtotal = detalles['cantidad'] * detalles['precio']
         print(f"- {nombre.capitalize()}: {detalles['cantidad']} x ${detalles['precio']:.2f} = ${subtotal:.2f}")
         total += subtotal
-    print(f"-----------------------------")
+    print(f"-")
     print(f"TOTAL A PAGAR: ${total:.2f}")
-    print("-----------------------------")
+    print("--")
 
 def main():
     cesta_de_compras = {
