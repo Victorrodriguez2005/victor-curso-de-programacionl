@@ -1,102 +1,88 @@
-#cesta
+Carrito_de_Compras =  []
 
-def mostrar_menu():
-    """Muestra las opciones del menu al usuario."""
-    print("\n- MENU DE LA CESTA DE COMPRAS -")
-    print("1. AGREGAR un nuevo elemento")
-    print("2. MOSTRAR el contenido de la cesta de la compra")
-    print("3. ELIMINAR un elemento")
-    print("4. CALCULAR el total de la compra")
-    print("5. SALIR del programa")
-    print("------------------------------------")
+def mostrar_lista():
+    "Menu para la compra"
+    print("Lista de Compra")
+    print("1. Agrega un producto")
+    print("2. Mostrar Carrito de Compra")
+    print("3. Eliminar producto")
+    print("4. Total de la compra")
+    print("5. Finalizar\n")
 
-def agregar_elemento(cesta):
-    """Permite al usuario agregar un elemento a la cesta."""
-    nombre = input("Ingresa el nombre del elemento: ").strip().lower()
-    try:
-        cantidad = int(input(f"Ingresa la cantidad de '{nombre}': "))
-        precio = float(input(f"Ingresa el precio unitario de '{nombre}': "))
-        if cantidad <= 0 or precio <= 0:
-            print("La cantidad y el precio deben ser mayores que cero.")
-            return
-        
-        if nombre in cesta:
-            cesta[nombre]['cantidad'] += cantidad
-            cesta[nombre]['precio'] = precio 
-            print(f"Cantidad y precio de '{nombre}' actualizados.")
-        else:
-            cesta[nombre] = {'cantidad': cantidad, 'precio': precio}
-            print(f"'{nombre}' agregado a la cesta.")
-    except ValueError:
-        print("Entrada inválida. Asegúrate de ingresar números para cantidad y precio.")
+def agregar_producto(cesta):
+    producto = input("Ingrese el nombre del producto: ")
+    while True:
+        try:
+            precio = float(input(f"Ingrese el precio de {producto}: "))
+            if precio <= 0:
+                print("El precio debe ser mayor que cero. Intente nuevamente.")
+                continue
+            break
+        except ValueError:
+            print("Por favor ingrese un numero valido para el precio.")
+    cesta.append({"producto": producto, "precio": precio})
+    print(f"{producto} Se agrego con el precio de {precio:}")
 
-def mostrar_cesta(cesta):
-    """Muestra todos los elementos en la cesta de compras."""
+def mostrar_carrito(cesta):
     if not cesta:
-        print("La cesta de compras está vacía.")
+        print(" Tu cesta esta vacia")
+        return
+    print("CONTENIDO DE LA CESTA")
+    for i, item in enumerate(cesta, 1):
+        print(f"{i}. {item['producto']} ${item['precio']}")
+
+def eliminar_producto(cesta):
+     mostrar_carrito(cesta)
+     if not cesta:
         return
     
-    print("\n--- CONTENIDO DE LA CESTA DE COMPRAS ---")
-    for nombre, detalles in cesta.items():
-        print(f"- {nombre.capitalize()}: {detalles['cantidad']} unidades ${detalles['precio']:.2f} c/u")
-    print
-
-def eliminar_elemento(cesta):
-    """Permite al usuario eliminar un elemento de la cesta."""
-    if not cesta:
-        print("La cesta de compras está vacía, no hay elementos para eliminar.")
-        return
-
-    nombre_eliminar = input("Ingresa el nombre del elemento a eliminar: ").strip().lower() 
-    if nombre_eliminar in cesta:
-        del cesta[nombre_eliminar]
-        print(f"'{nombre_eliminar.capitalize()}' eliminado de la cesta.")
-    else:
-        print(f"'{nombre_eliminar.capitalize()}' no se encontró en la cesta.")
+     while True:
+        try:
+            seleccion = int(input("Ingrese el numero del producto a eliminar (0 para cancelar): "))
+            if seleccion == 0:
+                print("Operacion cancelada.")
+                return
+            if 1 <= seleccion <= len(cesta):
+                producto_eliminado = cesta.pop(seleccion - 1)
+                print(f"{producto_eliminado['producto']} Se elimino de la cesta.")
+                break
+            else:
+                print(f"Por favor ingrese un numero entre 1 y {len(cesta)} o 0 para cancelar.")
+        except ValueError:
+            print("Por favor ingrese un numero valido.")
 
 def calcular_total(cesta):
-    """Calcula y muestra el total de la compra."""
-    if not cesta:
-        print("La cesta de compras está vacía, el total es $0.00.")
-        return
-
-    total = 0.0
-    print("\n--- RESUMEN DE LA COMPRA ---")
-    for nombre, detalles in cesta.items():
-        subtotal = detalles['cantidad'] * detalles['precio']
-        print(f"- {nombre.capitalize()}: {detalles['cantidad']} x ${detalles['precio']:.2f} = ${subtotal:.2f}")
-        total += subtotal
-    print(f"-----------------------------")
-    print(f"TOTAL A PAGAR: ${total:.2f}")
-    print("-----------------------------")
-
+      if not cesta:
+        print("No hay productos en la cesta para calcular el total.")
+        return 
+      total = sum(item['precio'] for item in cesta)
+      print("TOTAL DE LA COMPRA")
+      mostrar_carrito(cesta)
+      print(f"TOTAL A PAGAR: ${total}")
+ 
 def main():
-    cesta_de_compras = {
-        'arroz': {'cantidad': 1, 'precio': 20.00},
-        'pasta': {'cantidad': 1, 'precio': 20.00},
-        'pan': {'cantidad': 1, 'precio': 15.00},
-        'azucar': {'cantidad': 1, 'precio': 0.00}, 
-        'coca-cola': {'cantidad': 1, 'precio': 10.00},
-        'harina': {'cantidad': 1, 'precio': 30.00}
-    }
+   cesta = []
+   print("Bienvenido, realicemos una compra")
     
-    while True:
-        mostrar_menu()
-        opcion = input("Selecciona una opción (1-5): ").strip()
-
-        if opcion == '1':
-            agregar_elemento(cesta_de_compras)
-        elif opcion == '2':
-            mostrar_cesta(cesta_de_compras)
-        elif opcion == '3':
-            eliminar_elemento(cesta_de_compras)
-        elif opcion == '4':
-            calcular_total(cesta_de_compras)
-        elif opcion == '5':
-            print("¡Gracias por usar la cesta de compras! ¡Hasta luego!")
+   while True:
+        mostrar_lista()
+        opcion = input("Seleccione una opcion (1-5): ")
+        if opcion == "1":
+            agregar_producto(cesta)
+        elif opcion == "2":
+            mostrar_carrito(cesta)
+        elif opcion == "3":
+            eliminar_producto(cesta)
+        elif opcion == "4":
+            calcular_total(cesta)
+        elif opcion == "5":
+            print("Gracias por usar el simulador de cesta de compra")
+            print("Hasta la proxima")
             break
         else:
-            print("Opción inválida. Por favor, selecciona un número del 1 al 5.")
+            print("Opción no valida. Por favor ingrese un numero del 1 al 5.\n")
+        
+        input("Presione Enter para continuar.")
 
-if __name__ == "__main__":
+if __name__ == "_main_":
     main()

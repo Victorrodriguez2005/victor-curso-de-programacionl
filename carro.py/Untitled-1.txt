@@ -1,3 +1,4 @@
+
 def mostrar_menu():
     """Muestra las opciones del menu al usuario."""
     print("\n--- lista de compras ---")
