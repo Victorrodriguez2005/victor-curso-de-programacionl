@@ -1,0 +1,219 @@
+:root{
+    --colorBLUE: #1877f2;
+    --colorGreen: #42b72a;
+    --colorMain: #f0f2f5;
+    --colorWhite: #ffffff ;
+    --colorText: #282a2d;
+    --colorLine: #e7e9ec;
+    --colorLinks: #4b67a1;
+    --colorBorder: #dddfe2;
+    --colorPlaceholder: #949496;
+    --colorCopy: #848484;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body{
+    font-size: 16px;
+    font-family: Helvetica, Arial sans-serif;
+}
+
+h1,h2{
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*CLASES GENERALES*/
+.padding-main{
+  padding: 72px 0 112px 0;
+}
+
+.bg{
+  background-color: var(--colorMain);
+}
+
+.contenedor{
+  width: 98rem;
+  margin: 0 auto;
+}
+
+.bold{
+  font-weight: bold;
+  color: var(--colorText);
+}
+.pd-20{
+  padding: 2rem 0;
+}
+
+.dos-columnas{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 3.2rem;
+}
+
+.contenedor-logo{
+  width: 548px;
+  height: 182.05px;
+  padding: 112px 0 16px 0;
+  }
+
+  .logo{
+    width: 301.067px;
+    height: 106px;
+    margin: -28px;
+  }
+
+  .eslogam{
+    width: 50rem;
+    padding-bottom: 20px;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 3.2rem;
+    color:var(--colorText);
+  }
+
+  /*FORM*/
+
+  .shadow{
+    box-shadow: 0px 5px 7px #cccccc;
+  }
+
+  .card{
+    width: 396px;
+    height: 349.817px;
+    background-color: var(--colorWhite);
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px 0 24px 0;
+    margin-top: 4rem;
+  }
+
+  .card input[type="email"],
+  input[type="password"]{
+    display: inline-block;
+    width: 364px;
+    height: 52px;
+    padding: 14px 16px;
+    margin: 6px 0;
+    border-radius: 6px;
+    outline: none;
+    border: 1px solid var(--colorBorder);
+  }
+
+  .card input[type="email"]::placeholder,
+  input[type="password"]::placeholder {
+    color: var(--colorPlaceholder);
+    font-size: 1.7rem;
+  }
+
+  .cardinput[type="email"]:focus,input[type="password"]:focus{
+    border: 1px solid var(--colorBLUE);
+    box-shadow: 0px 0px 3px var(--colorBLUE);
+  }
+  
+  .card input[type="submit"]:focus{
+    border: 1px solid var(--colorBLUE);
+    box-shadow: 0px 0px 3px var(--colorBLUE);
+  }
+
+  .btn-blue{
+    width: 364px;
+    height: 48px;
+    border-radius: 6px;
+    border: none;
+    margin: 1rem 0 1.6rem 0;
+    background-color: var(--colorBLUE);
+    font-size: 2rem;
+    color: var(--colorWhite);
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .btn-blue:hover{
+    background-color: #1c73e4;
+  }
+
+  .link{
+    color: var(--colorBlue);
+    font-size: 1.4rem;
+  }
+
+  .link:hover{
+    text-decoration: underline;
+  }
+
+  .line{
+    height: 1px;
+    border-top: 1px solid var(--colorLine);
+    margin: 2rem 1.6rem 2.6rem 1.6rem;
+  }
+
+  .btn-green{
+    display: inline-block;
+    width: 189.75px;
+    height: 48px;
+    padding: 15px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 17px;
+    background-color: var(--colorGreen);
+    color:var(--colorWhite);
+  }
+
+  .btn-green:hover{
+    background-color: #3ca826;
+  }
+
+  .info{
+    grid-column: 2/3;
+    font-size: 1.4rem;
+    text-align: center;
+    color:var(--colorText);
+    margin: 2.8 rem 0 0 0;
+    line-height: 2rem;
+  }
+
+  /*FOOTER*/
+  .links{
+    padding-top: 8px;
+  }
+
+  .links a{
+    color: var(--colorLinks);
+    font-size: 1.2rem;
+  }
+
+  .links a:hover{
+    text-decoration: underline;
+  }
+
+  .links li{
+    display: inline-block;
+    padding-right: 1.5rem;
+  }
+
+  .line-fo{
+    height: 1px;
+    border-top: 1px solid var(--colorLine);
+  }
+
+  .copy{
+    margin: 2.5rem 0;
+    font-size: 1.1rem;
+    color:var(--colorCopy);
+  }
